@@ -1,0 +1,32 @@
+﻿@model TutorialWebApp.Models.ViewModels.OrderEntity
+
+<div class="row">
+    <div class="col-md-4">
+        <form asp-action ="InitiateOrder">
+            <div class="form-group">
+            <label asp-for="Customername" class="form-control"></label>
+            <input asp-for="Customername" class="form-control" />
+            </div>
+
+            <div class="form-group">
+            <label asp-for="Mobile" class="form-control"></label>
+            <input asp-for="Mobile" class="form-control"/>
+            </div>
+
+            <div class="form-group">
+            <label asp-for="Email" class="form-control"></label>
+            <input asp-for="Email" class="form-control" />
+            </div>
+
+            <div class="form-group">
+            <label asp-for="TotalAmount" class="form-control"></label>
+            <input asp-for="TotalAmount" class="form-control" />
+            </div>
+
+            <div class="form-group">
+                <input type="submit" value="Continue to pay" class="btn btn-primary"/>
+            </div>
+        </form>
+    </div>
+
+</div>

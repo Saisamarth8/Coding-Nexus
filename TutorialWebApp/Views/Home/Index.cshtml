@@ -1,0 +1,118 @@
+﻿@model TutorialWebApp.Models.ViewModels.HomeViewModel
+
+@{
+    ViewData["Title"] = "Home Page";
+}
+
+
+<div class="container col-xxl-8 px-4 py-5">
+    <div class="row align-items-center g-5 py-5">
+        <div class="col-12 col-lg-6">
+            <h1 class="display-5 fw-bold lh-1 mb-3">
+                Coding Nexus - Learn to code 
+            </h1>
+            <p class="lead">
+                Coding Nexus is the home to coding tutorials covering a vast range of
+                topics like HTML, CSS, Javascript, ASP.NET, C#, Angular etc.               
+            </p>
+        </div>
+        <div class="col-12 col-lg-6">
+            <img src="https://www.zdnet.com/a/img/resize/0a6b0be2f543ddbf313fc83a706b807b77c3c202/2021/07/19/8a337c80-5ed6-43a1-98fb-b981d420890f/programming-languages-shutterstock-1680857539.jpg?auto=webp&fit=crop&height=900&width=1200"
+                 alt="Coding Nexus - Dev tutorials"
+                 class="d-block mx-lg-auto img-fluid" width="400" />
+        </div>
+    </div>
+</div>
+
+<div class="container">
+    <div class="row justify-content-center">
+        <div class="col-md-4">
+            <div class="card mb-4">
+                <img src="https://raygun.com/blog/images/react-debugging/feat.jpg" class="card-img-top" alt="Card image cap">
+                <div class="card-body">
+                    <h5 class="card-title">React-The Complete Bootcamp 2024</h5>
+                    <p class="card-text">Price- Rs 499</p>
+                    <a href="/Order/" class="btn btn-primary">Buy Now</a>
+                </div>
+            </div>
+        </div>
+        <div class="col-md-4">
+            <div class="card mb-4">
+                <img src="https://t3.ftcdn.net/jpg/04/24/39/96/360_F_424399685_iabB6zUibdhlrJBlIEbhN2Z1U6I93gmc.jpg" class="card-img-top" alt="Card image cap">
+                <div class="card-body">
+                    <h5 class="card-title">SQL- The Ultimate Guide</h5>
+                    <p class="card-text">Price- Rs 499</p>
+                    <a href="/Order/" class="btn btn-primary" >Buy Now</a>
+                </div>
+            </div>
+        </div>
+        <div class="col-md-4">
+            <div class="card mb-4">
+                <img src="https://images.shiksha.com/mediadata/shikshaOnline/mailers/2021/naukri-learning/dec/17dec/What-is-Cplusplus.jpg" class="card-img-top" alt="Card image cap">
+                <div class="card-body">
+                    <h5 class="card-title">C++ for Beginners</h5>
+                    <p class="card-text">Price- Rs 499</p>
+                    <a href="/Order/" class="btn btn-primary">Buy Now</a>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+
+<div class="container">
+    <div class="row justify-content-center">
+        <div class="col-6 d-flex">
+            @if (Model != null && Model.Tags.Any())
+            {
+                foreach (var tag in Model.Tags)
+                {
+                    <span class="badge bg-dark me-1">
+                        @tag.Name
+                    </span>
+                }
+            }
+        </div>
+    </div>
+
+</div>
+
+<div class="container">
+    <div class="row justify-content-center">
+        <div class="col-6">
+            @if (Model != null && Model.TutorialPosts.Any())
+            {
+                foreach (var tutorialPost in Model.TutorialPosts)
+                {
+                    <div class="mb-5 bg-light box-shadow p-5">
+                        <img src="@tutorialPost.FeaturedImageUrl" alt="@tutorialPost.Heading"
+                             class="mb-2 d-block img-fluid" />
+
+                        <h2 class="mb-4">@tutorialPost.Heading</h2>
+                        <p class="mb-4">
+                            Author: @tutorialPost.Author
+                            <br />
+                            Published Date: @tutorialPost.PublishedDate.ToShortDateString()
+                        </p>
+
+                        <p class="mb-4">
+                            @foreach (var tag in tutorialPost.Tags)
+                            {
+                                <span class="badge bg-secondary me-1">@tag.Name</span>
+                            }
+                        </p>
+
+                        <p class="mb-4">@tutorialPost.ShortDescription</p>
+
+                        <a class="btn btn-dark"
+                           asp-area=""
+                           asp-controller="Tutorials"
+                           asp-action="Index"
+                           asp-route-urlHandle="@tutorialPost.UrlHandle">Read More</a>
+                    </div>
+
+                }
+            }
+        </div>
+    </div>
+</div>
